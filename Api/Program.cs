@@ -24,8 +24,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Database
 builder.Services.AddDbContext<IAppDbContext, AppDbContext>(options =>
-    options.UseInMemoryDatabase("VerticalSliceDb"));
-
+options.UseSqlite(builder.Configuration.GetConnectionString("Database")));
 // Validators
 builder.Services.AddValidatorsFromAssemblyContaining<CreateStudentValidator>();
 
@@ -56,7 +55,7 @@ builder.Services.AddOpenApi(options =>
 
 var app = builder.Build();
 
-// Seed data
+// Seed datadotnet
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
