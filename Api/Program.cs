@@ -57,7 +57,7 @@ var app = builder.Build();
 
 await app.Services.MigrateAndSeedAsync();
 
-// Configure the HTTP request pipeline
+// Configure the HTTP request pipelinegi
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
